@@ -16,33 +16,32 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class VinylRepository extends ServiceEntityRepository
 {
+    private $cover = '/assets/images/'; // Adjust the path as needed
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Vinyl::class);
     }
 
-//    /**
-//     * @return Vinyl[] Returns an array of Vinyl objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('v')
-//            ->andWhere('v.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('v.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Vinyl[] Returns an array of Vinyl objects
+     */
+    public function findAllWithImagePath(): array
+    {
+        $vinyls = $this->findAll();
+        $formattedVinyls = [];
 
-//    public function findOneBySomeField($value): ?Vinyl
-//    {
-//        return $this->createQueryBuilder('v')
-//            ->andWhere('v.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        foreach ($vinyls as $vinyl) {
+            $formattedVinyls[] = [
+                'titre' => $vinyl->getTitre(),
+                'artiste' => $vinyl->getArtiste(),
+                'annee' => $vinyl->getAnnee(),
+                'cover' => $this->cover . $vinyl->getCover(),
+                'audio' => $vinyl->getAudio(),
+                'album' => $vinyl->getAlbum(),
+            ];
+        }
+
+        return $formattedVinyls;
+    }
 }

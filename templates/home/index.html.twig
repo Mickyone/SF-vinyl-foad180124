@@ -2,6 +2,56 @@
 
 {% block title %}Vinyl Collection{% endblock %}
 
+{% block stylesheets %}
+    <style>
+        .row{
+            display: flex;
+            flex-wrap: wrap;
+            display: flex;
+            justify-content: center;
+        }
+        .row div{
+            margin: 10px;
+            border-radius: 15px;
+            width: 18rem;
+            height: 25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: green;
+        }
+        .card{
+            margin: 10px;
+        }
+        .card-img-top{
+            border: 1px solid black;
+            border-radius: 10px;
+            width: 20vw;
+            height: 50vh;
+            margin-top: 25px;
+        }
+        .card-title{
+            margin: 0;
+            margin-bottom: 10px;
+            font-size: 120%;
+        }
+        .card-text{
+            margin: 0;
+        }
+        .card-body p{
+            margin: 0;
+        }
+        .card-body .btn{
+            margin-top: 10px;
+        }
+        .card div img{
+            width: 20vw;
+            margin-top: 25px;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
     <div class="container">
         <h2>Vinyl Collection</h2>
@@ -9,13 +59,15 @@
             {% for vinyl in vinyls %}
                 <div class="col-md-3 mb-4">
                     <div class="card">
-                        <img src="{{ asset('uploads/' ~ vinyl.cover) }}" class="card-img-top" alt="Vinyl Cover">
+                        <div><img src="{{asset('assets/images/'~vinyl.cover) }}" alt="{{ vinyl.titre }}"/></div>
+
                         <div class="card-body">
                             <h5 class="card-title">{{ vinyl.titre }}</h5>
                             <p class="card-text">
-                                <strong>Artist:</strong> {{ vinyl.artiste }}<br>
-                                <strong>Year:</strong> {{ vinyl.annee }}<br>
-                                <strong>Album:</strong> {{ vinyl.album }}
+                                
+                                <p><strong>Artist:</strong> {{ vinyl.artiste }}</p><br>
+                                <p><strong>Year:</strong> {{ vinyl.annee }}</p><br>
+                                <p><strong>Album:</strong> {{ vinyl.album }}</p>
                             </p>
                             <a href="{{ path('app_vinyl_show', {'id': vinyl.id}) }}" class="btn btn-primary">Details</a>
                         </div>
