@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Vinyl;
 use App\Form\VinylType;
-use App\Repository\VinylRepository;
+use App\Repository\VinylRepository; // Assurez-vous que cette ligne est présente
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

@@ -20,4 +20,22 @@
 
 ## Creation controller pour homepage => symfony console make:controller
 
-## 
+## update HomeController =>
+    #[Route('/', name: 'app_home')]
+    public function index(): Response
+    {
+        return $this->render('home/index.html.twig', [
+            'controller_name' => 'HomeController',
+            'vinyls' => $vinylRepository->findAll(),
+        ]);
+    }
+### vers =>
+    #[Route('/', name: 'app_home')]
+    public function index(VinylRepository $vinylRepository): Response
+    {
+        $vinyls = $vinylRepository->findAll();
+
+        return $this->render('home/index.html.twig', [
+            'vinyls' => $vinyls,
+        ]);
+    }
