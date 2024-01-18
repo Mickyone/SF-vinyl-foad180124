@@ -20,7 +20,7 @@ class VinylController extends AbstractController
         return $this->render('vinyl/index.html.twig', [
             'vinyls' => $vinylRepository->findAll(),
         ]);
-    }
+    }    
 
     #[Route('/new', name: 'app_vinyl_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response

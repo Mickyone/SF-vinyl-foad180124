@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vinyl Collection{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h2>Vinyl Collection</h2>
+        <div class="row">
+            {% for vinyl in vinyls %}
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <img src="{{ asset('uploads/' ~ vinyl.cover) }}" class="card-img-top" alt="Vinyl Cover">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ vinyl.titre }}</h5>
+                            <p class="card-text">
+                                <strong>Artist:</strong> {{ vinyl.artiste }}<br>
+                                <strong>Year:</strong> {{ vinyl.annee }}<br>
+                                <strong>Album:</strong> {{ vinyl.album }}
+                            </p>
+                            <a href="{{ path('app_vinyl_show', {'id': vinyl.id}) }}" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% if vinyls is empty %}
+            <p class="text-center">No vinyl records found.</p>
+        {% endif %}
+    </div>
+{% endblock %}

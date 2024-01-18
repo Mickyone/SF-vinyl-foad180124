@@ -14,4 +14,10 @@
 
 ## installation de fixtures => composer require orm-fixtures --dev
 
-## creation du fixtures
+## edit AppFixtures => for loop
+
+## generate fixtures => php bin/console doctrine:fixtures:load
+
+## Creation controller pour homepage => symfony console make:controller
+
+## 

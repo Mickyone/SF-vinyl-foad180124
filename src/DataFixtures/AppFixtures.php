@@ -17,7 +17,7 @@ class AppFixtures extends Fixture
             $vinyl = new Vinyl();
             $vinyl->setTitre('Titre' . $i);
             $vinyl->setArtiste('Artiste' . $i);
-            $vinyl->setAnnee(1983 + $i);
+            $vinyl->setAnnee(2000 + $i);
             $vinyl->setCover('cover' . $i . '.jpg');
             $vinyl->setAudio('audio' . $i . '.mp3');
             $vinyl->setAlbum('Album' . $i);
