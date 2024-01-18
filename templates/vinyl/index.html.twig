@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vinyl index{% endblock %}
+
+{% block body %}
+    <h1>Vinyl index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Artiste</th>
+                <th>Annee</th>
+                <th>Cover</th>
+                <th>Audio</th>
+                <th>Album</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vinyl in vinyls %}
+            <tr>
+                <td>{{ vinyl.id }}</td>
+                <td>{{ vinyl.titre }}</td>
+                <td>{{ vinyl.artiste }}</td>
+                <td>{{ vinyl.annee }}</td>
+                <td>{{ vinyl.cover }}</td>
+                <td>{{ vinyl.audio }}</td>
+                <td>{{ vinyl.album }}</td>
+                <td>
+                    <a href="{{ path('app_vinyl_show', {'id': vinyl.id}) }}">show</a>
+                    <a href="{{ path('app_vinyl_edit', {'id': vinyl.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_vinyl_new') }}">Create new</a>
+{% endblock %}

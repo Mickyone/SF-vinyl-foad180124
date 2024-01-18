@@ -1,0 +1,54 @@
+installation de symfony:
+    Vous pouvez l'installer en suivant les instructions sur le site officiel : Installation de Symfony CLI.
+    - installer composer        //  voir chat gpt scoop -> scoop install symfony-cli
+    - ouvrir powershell -> Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+                        -> iwr -useb get.scoop.sh | iex     ou      iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
+Avec Symfony CLI (si installée) :
+    console: symfony new nom_du_projet
+Sans Symfony CLI, utilisez Composer :
+    console: composer create-project symfony/website-skeleton nom_du_projet
+Une fois le projet créé, accédez au répertoire de votre nouveau projet :
+    cd nom_du_projet
+
+symfony server:stop
+symfony server:start -d (detached "en arriere plan")
+symfony server:ca:install   => https
+symfony open:local  => ouvre navigateur par defaut
+symfony console debug:router    => voir toutes les routes
+
+- Installation basique de symfony (chat gpt)
+- Création d'un controller  -> composer require symfony/maker-bundle --dev
+    creer un controller => console: symfony console make:controller
+    puis taper le nom du controller dans le champ de la console
+- ajout de twig     -> composer require twig    (composer update si besoin)
+    installer le plugin twig language 2
+    console: symfony console make:controller
+        puis nom du controller
+        (si besoin: symfony console cache:clear) ou php bin/console cache:clear
+- installer stylesheet:
+    - console: composer require symfony/asset
+
+composer install
+
+symfony.exe console make:controller -> mettre le nom du controller  -> cree le NomController.php
+
+emmet include (voir chat gpt)
+
+
+PROJET SFBOOKMARK
+
+symfony.exe console d:d:c
+symfony.exe console make:entity
+symfony console doctrine:database:create
+symfony.exe console make:migration
+symfony.exe console make:migration:migrate (d:m:m)
+
+FORMULAIRE INSCRIPTION
+
+composer require symfony/security-bundle
+composer require --dev orm-fixtures
+composer require fakerphp/faker (generer faux noms, email, password, etc...)
+
+php bin/console d:f:l
+
+composer require form validator
