@@ -103,4 +103,5 @@
 
 # REGISTRATION CONTROLLER
 
-## 
+## Create a registration form =>    symfony console make:form
+    the files: RegistrationController, RegistrationFormType, and register.html.twig have been created

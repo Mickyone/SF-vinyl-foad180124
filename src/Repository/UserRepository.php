@@ -54,6 +54,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 //        ;
 //    }
 
+
+// DECOMMENT THIS BLOCK CODE:
 //    public function findOneBySomeField($value): ?User
 //    {
 //        return $this->createQueryBuilder('u')
@@ -63,4 +65,14 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+// AND UPDATE IT AS FOLLOW:
+    public function findOneByUsernameOrEmail(string $value): ?User
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.username = :val OR u.email = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

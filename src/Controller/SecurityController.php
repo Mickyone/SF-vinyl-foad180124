@@ -24,7 +24,7 @@ class SecurityController extends AbstractController
 
         // add this block code (start):
         $form = $this->createForm(LoginFormType::class, [
-            '_username' => $lastUsername,
+            'username' => $lastUsername,
         ]);
         // add this block code (end)
         
